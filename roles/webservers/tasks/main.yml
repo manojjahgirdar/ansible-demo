@@ -1,26 +1,21 @@
 - name: install webserver
-    yum:
-       name: "{{ package_name }}"
-       state: present
+  yum:
+     name: "{{ package_name }}"
+     state: present
 
-  - name: manage service
-    service:
-       name: "{{ service_name }}"
-       state: started
+- name: manage service
+  service:
+     name: "{{ service_name }}"
+     state: started
 
-  - name: deploy site
-    copy:
-       src: index.html
-       dest: /var/www/html
+- name: deploy site
+  copy:
+     src: index.html
+     dest: /var/www/html
 
-  - name: deploy template
-    template:
-       src: index.html
-       dest: /var/www/html
-    notify:
-    - restart_server
-    
-  - name: create user
-    user:
-      name: "{{ user_name }}"
-      state: present
+- name: deploy template
+  template:
+     src: index.html
+     dest: /var/www/html
+  notify:
+  - restart_server

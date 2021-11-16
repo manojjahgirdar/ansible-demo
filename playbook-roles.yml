@@ -3,10 +3,18 @@
   become: true
   remote_user: centos
   gather_facts: false
-  roles: 'user1'
+  roles:
+  - webservers
+
+  tasks:
+  - name: start tomcat
+    command: 'sh /opt/tomcat/bin/startup.sh'
+    ignore_errors: yes 
   
 - name: manage users
   hosts: localhost
   become: true
   gather_facts: false
   connection: local
+  roles:
+  - webservers
