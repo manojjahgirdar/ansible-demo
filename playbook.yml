@@ -4,6 +4,12 @@
   remote_user: centos
   gather_facts: false
   
+  handlers:
+  - name: restart_server
+    service:
+       name: "{{ service_name }}"
+       state: restarted  
+  
   tasks:
   - name: install webserver
     yum:
@@ -21,6 +27,8 @@
     template:
        src: index.html
        dest: /var/www/html
+    notify:
+    - restart_server
 
 - name: manage users
   hosts: localhost
