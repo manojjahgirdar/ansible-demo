@@ -1,0 +1,4 @@
+'package_name': 'httpd'
+'service_name': 'httpd'
+
+'user_name': 'user1'

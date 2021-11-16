@@ -1,0 +1,12 @@
+- name: install webserver package
+  hosts: webserver
+  become: true
+  remote_user: centos
+  gather_facts: false
+  roles: 'user1'
+  
+- name: manage users
+  hosts: localhost
+  become: true
+  gather_facts: false
+  connection: local
